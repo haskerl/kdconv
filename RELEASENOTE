@@ -2,6 +2,14 @@
 			RELEASENOTE
 ------------------------------------------------------------
 
+v1.0.4-dirtyfork-0.1 (2013/1/2)
+- add ocr scan.(ubuntu 12.10 and tesseract-ocr 3.0.2 / test by jpn train only!)
+- resizing , scaning , searchable text process parallizing.(xargs)
+- slicing process jpg to pnggray chanage.
+- PDF/A title internationalaization.
+- searchable text inserting process.
+- and ... many bug ?
+
 v1.0.4 (2011/03/16)
 - fix bug: enable to trim the margin correctly for KindleDX.
 - fix bug: enable to create tmpdir on MacOS X.

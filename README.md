@@ -5,16 +5,15 @@ DESCRIPTION
 --------------------
 
 kdconv is a program for converting a PDF document into a Kindle and/or
-Sony Reader(PRS-350) friendly format.
+Sony Reader(PRS-G1) friendly format.
 
 Kindle2/3 and Sony Reader can display PDF documents, but, especially if
 the documents holds data as image format, these devices are hard to
 display it with good readability.
 
 This program converts a PDF document into Kindle2/3 or Sony Reader
-friendly paper size and improves readability.  In addition, this program
-can eliminate extra margin from original document and transfer the file
-into Kindle2/3 or Sony Reader automatically.
+friendly paper size and improves readability.Also, you can automatically
+ embed searchable text by OCR features and to remove the margin.
 
 Usually these processes reduce file-size, so you can store more documents
 into your device.
@@ -24,46 +23,35 @@ PLATFORM
 --------------------
 This program will run on:
 
-* MacOS X 10.6 and later(earlier version is not tested)
+* Ubuntu 12.10
 
 Some users report me they can run it on Linux and/or FreeBSD.
 
 This program supports these devices:
 
-* Kindle2/3(KindleDX is not tested)
-* Sony Reader PRS-350
-
+* Sony Reader PRS-G1
 
 PREPARATION
 --------------------
 This program depends on below programs.  Please install them into a
 directory where in your PATH with using MacPorts so on.
 
-* ghostscript(8.71 and layer)
-* ImageMagick(6.6.1 and later)
-* pdftk(1.12 and later.  Optional)
+* ghostscript(9.06 higher)
+* ImageMagick(6.7.7 higher)
+* pdftk(1.44)
+* Python(2.7)
+   * pdfrw(0.1)
+   * fpdf(1.7)
+* perl(5.14.2)
 
-For example, if you'd like to install with MacPorts in default setting:
-
-    $ sudo port install ghostscript ImageMagick pdftk
-
-If you have not installed pdftk, you cannot embed an author name into
-meta data, which is provided by -a option.
-
-After finishing installing related programs, you should put kdconv into
-a PATH search-able directory and set execute attribute.  For example, if
-you'd like to install /opt/local/bin:
-
-    $ sudo install kdconv /opt/local/bin
-
-Or if you'd like to install it with manual page:
+After finishing installing related programs,you'd like to install:
 
     $ sudo make install
 
 
 USAGE
 --------------------
-Convert foo.pdf to bar.pdf for Kindle2/3:
+Convert foo.pdf to bar.pdf for SonyReader:
 
     $ kdconv foo.pdf bar.pdf
 
@@ -73,6 +61,7 @@ available options.
 
 SPECIAL THANKS
 --------------------
+We like to thank the original MIYOKAWA Nobuyoshi prepared this script.
 I appreciate follow people who contribute useful information and/or
 patch for enhancing script.
 
@@ -80,6 +69,9 @@ Noriaki Mitsunaga-san, @toplut-san, cinq-san.
 
 AUTHOR
 --------------------
+Shin HATTORI
+* E-Mail: toplut@gmail.com
+
 MIYOKAWA, Nobuyoshi
 
 * E-Mail: n-miyo@tempus.org
@@ -89,6 +81,7 @@ MIYOKAWA, Nobuyoshi
 
 COPYRIGHT
 --------------------
+Copyright (c) 2012-2013 Shin HATTORI. All rights reserved.
 Copyright (c) 2010-2011 MIYOKAWA, Nobuyoshi.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

@@ -12,8 +12,8 @@ Kindle2/3、Sony Reader では PDF を表示出来ますが、特にデータが
 ます。
 
 このプログラムは、指定された PDF を Kindle2/3、Sony Reader に適したサイズ
-へ変換し、視認性を高めた後、出力します。また、余白を取り除く機能や自動的
-に Kindle2/3、Sony Reader へ転送したりすることも可能です。
+へ変換し、視認性を高めた後、出力します。また、余白を取り除く機能やOCRによる
+検索可能なテキストを自動で埋め込む事が出来ます。
 
 出力されたファイルのサイズはオリジナルファイルよりも小さくなることから、
 単一デバイスへ複数のファイルを格納する際にも便利です。
@@ -23,14 +23,13 @@ PLATFORM
 --------------------
 サポートしているOSは以下の通りです。
 
-* MacOS X 10.6以上(それ以前は未検証)
+* Ubuntu 12.10
 
 また Linux や FreeBSD での動作報告もいただいています。
 
 サポートしているデバイスは以下の通りです。
 
-* Kindle2/3(KindledDX は未検証)
-* Sony Reader PRS-350
+* Sony Reader PRS-G1
 
 
 PREPARATION
@@ -38,31 +37,22 @@ PREPARATION
 このプログラムは、以下の外部プログラムへ依存しています。MacPorts などを用
 いて path の通っているディレクトリへインストールしてください。
 
-* ghostscript(8.71以上)
-* ImageMagick(6.6.1以上)
-* pdftk(1.12以上。ただしインストールはオプション)
+* ghostscript(9.06以上)
+* ImageMagick(6.7.7-10以上)
+* pdftk(1.44)
+* Python(2.7)
+   * pdfrw(0.1)
+   * fpdf(1.7)
+* perl(5.14.2)
 
-例えば MacPorts で default のままインストールするには:
-
-    $ sudo port install ghostscript ImageMagick pdftk
-
-pdftk がインストールされていない場合、-a オプションによる作者名のメタデー
-タ埋め込み機能が動作しません。
-
-外部プログラムのインストールが済んだら kdconv をパスの通った適当なディレ
-クトリへ install し、実行属性を設定します。例えば /opt/local/bin へインス
-トールするには:
-
-    $ sudo install kdconv /opt/local/bin
-
-または、マニュアルページも合わせてインストールするには:
+外部プログラムのインストールが済んだらmake にてインストールを行います。
 
     $ sudo make install
 
 
 USAGE
 --------------------
-foo.pdf を Kindle2/3 用に変換し bar.pdf として出力するには:
+foo.pdf を sonyreader 用に変換し bar.pdf として出力するには:
 
     $ kdconv foo.pdf bar.pdf
 
@@ -71,6 +61,8 @@ foo.pdf を Kindle2/3 用に変換し bar.pdf として出力するには:
 
 SPECIAL THANKS
 --------------------
+このスクリプトを作製元のMIYOKAWA , Nobuyoshi様に感謝を致します。
+
 以下の方々から有益なご指摘やパッチを頂き、より使いやすいスクリプトにする
 ことが出来ました。感謝いたします。
 
@@ -79,6 +71,9 @@ Noriaki Mitsunaga さん、@toplut さん、cinq さん。
 
 AUTHOR
 --------------------
+Shin HATTORI
+* E-Mail: toplut@gmail.com
+
 MIYOKAWA, Nobuyoshi
 
 * E-Mail: n-miyo@tempus.org
@@ -88,6 +83,7 @@ MIYOKAWA, Nobuyoshi
 
 COPYRIGHT
 --------------------
+Copyright (c) 2012-2013 Shin HATTORI. All rights reserved.
 Copyright (c) 2010-2011 MIYOKAWA, Nobuyoshi.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
