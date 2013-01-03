@@ -270,6 +270,7 @@ convandocr()
     [ ${BILEVEL} -eq 0 ] || _imagetype="Bilevel"
 
     echo -n 'Resizing Image ....'
+    if [ $OCR -eq 1 ]; then
     find . -name "*.png" -print0 | perl -pe 's/\.png\0/\0/g' | xargs -0 -L 100 -P ${THREAD} -I%  \
 	convert \
 	    %.png \
@@ -285,7 +286,7 @@ convandocr()
 	    -page ${_papersize} \
 	    %.front.pdf 
     echo 'Done !'
-    if [ $OCR -eq 1 ]; then
+
     echo -n 'OCR scanning ...'
     find . -name "*.png" -print0 | perl -pe 's/\.png\0/\0/g' | xargs -0 -L 100 -P ${THREAD} -I% \
             tesseract \
@@ -294,7 +295,24 @@ convandocr()
             -l ${TESSLNG} \
             ${KDCFGDIR}/${TESSCUST}
     echo 'Done !'
+    else
+    find . -name "*.png" -print0 | perl -pe 's/\.png\0/\0/g' | xargs -0 -L 100 -P ${THREAD} -I%  \
+        convert \
+            %.png \
+            -density ${PDF_DPI} \
+            ${_trim} \
+            -modulate 110 -gamma 0.3/0.3/0.3 \
+            -resize ${_papersize} \
+            -gravity center \
+            -extent ${_papersize} \
+            -fill gray \
+            -draw 'point 0,0' \
+            -draw "point $((${PAPERSIZE_X}-1)),$((${PAPERSIZE_Y}-1))" \
+            -page ${_papersize} \
+            %.pdf
+    echo 'Done !'
     fi
+
 }
 
 join()
