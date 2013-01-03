@@ -38,6 +38,7 @@ DEVICETYPE=${KDCONV_DEVICETYPE:-sonyreader}
 KEEPWORKDIR=${KDCONV_KEEPWORKDIR:-0}
 TRIM=${KDCONV_TRIM:-1}
 DEBUG=${KDCONV_DEBUG:-0}
+OCR=0
 
 GS_DPI=300
 PDF_DPI=96
@@ -65,7 +66,7 @@ AUTHOR='KDCONV'
 TESSLNG='jpn'
 FONTPATH='/usr/share/fonts/truetype/takao-gothic/TakaoPGothic.ttf'
 FONTNAME='TakaoPGothic'
-THREAD='3'
+THREAD='4'
 KDCFGDIR='/usr/local/etc/kdconv'
 TESSCUST='tess.cfg'
 
