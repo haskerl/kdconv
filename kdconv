@@ -278,7 +278,7 @@ convandocr()
 	    -density ${PDF_DPI} \
 	    ${_trim} \
 	    -modulate 110 -gamma 0.3/0.3/0.3 \
-	    -resize ${_papersize} \
+	    -adaptive-resize ${_papersize} \
 	    -gravity center \
 	    -extent ${_papersize} \
 	    -fill gray \
@@ -303,7 +303,7 @@ convandocr()
             -density ${PDF_DPI} \
             ${_trim} \
             -modulate 110 -gamma 0.3/0.3/0.3 \
-            -resize ${_papersize} \
+            -adaptive-resize ${_papersize} \
             -gravity center \
             -extent ${_papersize} \
             -fill gray \
