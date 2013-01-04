@@ -56,6 +56,8 @@ SONYREADER_DEVICEPATH=/Volumes/READER
 PRS_PAPERSIZE_X=584
 PRS_PAPERSIZE_Y=754
 PRS_DEVICEPATH=/Volumes/READER
+PAPERWHITE_PAPERSIZE_X=758
+PAPERWHITE_PAPERSIZE_Y=1024
 
 OPTIONS="a:bcef:op:tvDKhd:rF:N:L:"
 PROGNAME=`basename $0`
@@ -92,7 +94,7 @@ EOM
   -b                convert to B&W image instead of Grayscale.
   -c                copy if convert finished.
   -e                eject if copy finished.
-  -f <DEVICEFORMAT> set format type. {kindle|kindledx|sonyreader|prs}
+  -f <DEVICEFORMAT> set format type. {kindle|kindledx|sonyreader|prs|paperwhite}
   -o                overwrite output-pdf if already exits.
   -p <DEVICEDOCDIR> Kindle doc directory path.
   -t                try to trim extra space.
@@ -232,6 +234,11 @@ parseopt()
 	    PDF_DPI=167
             [ ${DEVICEDOCPATH}x = x ] && DEVICEDOCPATH=${PRS_DEVICEPATH}
             ;;
+        paperwhite)
+            PAPERSIZE_X=${PAPERWHITE_PAPERSIZE_X}
+            PAPERSIZE_Y=${PAPERWHITE_PAPERSIZE_Y}
+            PDF_DPI=212
+	    ;;
 	*)
 	    err 1 "Unsupported format type: ${DEVICETYPE}"
 	    ;;
