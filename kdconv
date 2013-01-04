@@ -229,6 +229,7 @@ parseopt()
         prs)
             PAPERSIZE_X=${PRS_PAPERSIZE_X}
             PAPERSIZE_Y=${PRS_PAPERSIZE_Y}
+	    PDF_DPI=167
             [ ${DEVICEDOCPATH}x = x ] && DEVICEDOCPATH=${PRS_DEVICEPATH}
             ;;
 	*)
@@ -262,8 +263,8 @@ slice()
 	-dBATCH \
 	-dNOPAUSE \
 	-r${GS_DPI} \
-	-sDEVICE=pnggray \
-	-dTextAlphaBits=4 \
+	-sDEVICE=png16m \
+	 -dGraphicsAlphaBits=4 \
 	-dMaxStripSize=8192 \
 	-sOutputFile="${PROGNAME}.%04d.png" \
 	-q \
@@ -283,18 +284,21 @@ convandocr()
     find . -name "*.png" -print0 | perl -pe 's/\.png\0/\0/g' | xargs -0 -L 100 -P ${THREAD} -I%  \
 	convert \
 	    %.png \
-	    -filter Quadratic \
+	    -filter Point \
+	    -type GrayscaleMatte \
+	    -units PixelsPerInch \
+            -define pdf:use-cropbox=true \
+            -define pdf:use-trimbox=true \
+	    -modulate 110 -gamma 0.3/0.3/0.3 \
 	    -density ${PDF_DPI} \
 	    ${_trim} \
-	    -threshold 40% \
-	    -adaptive-sharpen 0.8 \
+	    -quality 100 \
 	    -adaptive-resize ${_papersize} \
 	    -gravity center \
-	    -extent ${_papersize} \
-	    -draw 'point 0,0' \
-	    -draw "point $((${PAPERSIZE_X}-1)),$((${PAPERSIZE_Y}-1))" \
-	    -page ${_papersize} \
+            -extent ${_papersize} \
+            -page ${_papersize} \
 	    %.front.pdf 
+
     echo 'Done !'
 
     echo -n 'OCR scanning ...'
@@ -309,16 +313,18 @@ convandocr()
     find . -name "*.png" -print0 | perl -pe 's/\.png\0/\0/g' | xargs -0 -L 100 -P ${THREAD} -I%  \
         convert \
             %.png \
-	    -filter Quadratic \
+	    -filter Point \
+	    -type GrayscaleMatte \
+	    -units PixelsPerInch \
+	    -define pdf:use-cropbox=true \
+	    -define pdf:use-trimbox=true \
+	    -modulate 110 -gamma 0.3/0.3/0.3 \
             -density ${PDF_DPI} \
             ${_trim} \
-            -threshold 40% \
-            -adaptive-sharpen 0.8 \
-            -adaptive-resize ${_papersize} \
+            -quality 100 \
+            -adaptive-resize  ${_papersize} \
             -gravity center \
             -extent ${_papersize} \
-            -draw 'point 0,0' \
-            -draw "point $((${PAPERSIZE_X}-1)),$((${PAPERSIZE_Y}-1))" \
             -page ${_papersize} \
             %.pdf
     echo 'Done !'
