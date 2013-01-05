@@ -56,8 +56,8 @@ SONYREADER_DEVICEPATH=/Volumes/READER
 PRS_PAPERSIZE_X=584
 PRS_PAPERSIZE_Y=754
 PRS_DEVICEPATH=/Volumes/READER
-PAPERWHITE_PAPERSIZE_X=758
-PAPERWHITE_PAPERSIZE_Y=1024
+PAPERWHITE_PAPERSIZE_X=658
+PAPERWHITE_PAPERSIZE_Y=905
 
 OPTIONS="a:bcef:op:tvDKhd:rF:N:L:"
 PROGNAME=`basename $0`
@@ -296,7 +296,6 @@ convandocr()
 	    -units PixelsPerInch \
             -define pdf:use-cropbox=true \
             -define pdf:use-trimbox=true \
-	    -modulate 110 -gamma 0.3/0.3/0.3 \
 	    -density ${PDF_DPI} \
 	    ${_trim} \
 	    -quality 100 \
@@ -325,7 +324,6 @@ convandocr()
 	    -units PixelsPerInch \
 	    -define pdf:use-cropbox=true \
 	    -define pdf:use-trimbox=true \
-	    -modulate 110 -gamma 0.3/0.3/0.3 \
             -density ${PDF_DPI} \
             ${_trim} \
             -quality 100 \
