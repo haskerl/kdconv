@@ -298,7 +298,6 @@ convandocr()
             -define pdf:use-trimbox=true \
 	    -density ${PDF_DPI} \
 	    ${_trim} \
-	    -quality 100 \
 	    -adaptive-resize ${_papersize} \
 	    -gravity center \
             -extent ${_papersize} \
@@ -328,7 +327,6 @@ convandocr()
 	    -define pdf:use-trimbox=true \
             -density ${PDF_DPI} \
             ${_trim} \
-            -quality 100 \
             -adaptive-resize  ${_papersize} \
             -gravity center \
             -extent ${_papersize} \
