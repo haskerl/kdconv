@@ -295,8 +295,6 @@ convandocr()
 	    -filter Spline \
 	    -colors 16 \
 	    -depth 4 \
-	    -auto-gamma \
-	    -auto-level \
 	    +dither \
 	    -quantize GRAY \
 	    -fill gray \
@@ -333,8 +331,6 @@ convandocr()
             -colors 16 \
 	    -depth 4 \
             +dither \
-	    -auto-gamma \
-            -auto-level \
             -quantize GRAY \
             -fill gray \
             ${_compress} \
