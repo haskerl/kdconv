@@ -294,7 +294,7 @@ convandocr()
 	    %.png \
 	    -filter Spline \
 	    -colors 16 \
-	    -depth 16 \
+	    -depth 4 \
 	    -auto-gamma \
 	    -auto-level \
 	    +dither \
@@ -331,7 +331,7 @@ convandocr()
             %.png \
             -filter Spline \
             -colors 16 \
-	    -depth 16 \
+	    -depth 4 \
             +dither \
 	    -auto-gamma \
             -auto-level \
