@@ -293,13 +293,11 @@ convandocr()
 	convert \
 	    %.png \
 	    -filter Spline \
-	    -colors 16 \
 	    -depth 4 \
 	    +dither \
-	    -quantize GRAY \
-	    -fill gray \
+	    -level 0%,75%,0.8 \
 	    ${_compress} \
-	    -type GrayscaleMatte \
+	    -type Grayscale \
 	    -units PixelsPerInch \
             -define pdf:use-cropbox=true \
             -define pdf:use-trimbox=true \
@@ -328,13 +326,11 @@ convandocr()
         convert \
             %.png \
             -filter Spline \
-            -colors 16 \
 	    -depth 4 \
             +dither \
-            -quantize GRAY \
-            -fill gray \
+	    -level 0%,75%,0.8 \
             ${_compress} \
-	    -type GrayscaleMatte \
+	    -type Grayscale \
 	    -units PixelsPerInch \
 	    -define pdf:use-cropbox=true \
 	    -define pdf:use-trimbox=true \
